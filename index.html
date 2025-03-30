@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fliplingo - Professional Translation Platform</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Navigation */
+        .navbar {
+            padding: 15px 0;
+            background-color: white !important;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #1a2a4a);
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        /* Cards */
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-language me-2"></i>Fliplingo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#solutions">Solutions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-light me-2">Login</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pe-lg-5 hero-content animate__animated animate__fadeIn">
+                    <h1 class="hero-title">Professional Translation for Global Businesses</h1>
+                    <p class="lead mb-4">Break language barriers and expand your reach with our network of 15,000+ professional translators delivering human-quality translations in 30+ languages.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <a href="#features" class="btn btn-light btn-lg px-4 fw-bold">Start Translating NOW</a>
+                        <a href="#solutions" class="btn btn-outline-light btn-lg px-4">See How It Works</a>
+                    </div>
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="me-4 mb-2">
+                            <i class="fas fa-check-circle me-2"></i> 99.5% Satisfaction
+                        </div>
+                        <div class="me-4 mb-2">
+                            <i class="fas fa-check-circle me-2"></i> <1 Hour Avg. Delivery
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-check-circle me-2"></i> Enterprise Security
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeInRight">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Translation Platform" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator animate__animated animate__fadeInUp animate__delay-1s">
+            <a href="#features" class="text-white"><i class="fas fa-chevron-down fa-2x"></i></a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section bg-light" id="features">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title animate__animated animate__fadeIn">Professional Translation</h2>
+                    <p class="lead animate__animated animate__fadeIn animate__delay-1s">Our network of selected translators work with you and follow your instructions to deliver professional quality translation. With a 99.5% satisfaction rate, they translate in all major languages spoken online so you can now reach almost anyone around the globe.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="feature-card p-4">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-globe fs-3"></i>
+                            </div>
+                            <h4 class="card-title">15,000+ TRANSLATORS</h4>
+                            <p class="card-text">Our network of selected translators is here to help you grow and manage your business</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="feature-card p-4">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-clock fs-3"></i>
+                            </div>
+                            <h4 class="card-title">LESS THAN AN HOUR</h4>
+                            <p class="card-text">With the fastest human translation service, last-minute jobs and time-sensitive content</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="feature-card p-4">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-language fs-3"></i>
+                            </div>
+                            <h4 class="card-title">30+ LANGUAGES</h4>
+                            <p class="card-text">And counting! Fliplingo supports all major languages used across the web.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Solution Section -->
+    <section class="section" id="solutions">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title animate__animated animate__fadeIn">A complete solution</h2>
+                    <p class="lead animate__animated animate__fadeIn animate__delay-1s">Easily translate all your business content with a streamlined translation workflow. In one-click, order Text, html, files or directly connect your social media and blog posts for smooth translations.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3 animate__animated animate__fadeInLeft">
+                    <div class="feature-card h-100 p-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-align-left text-primary mb-3" style="font-size: 2rem;"></i>
+                            <h4>PLAIN TEXT</h4>
+                            <p class="text-muted">Submit any size plain text for translation that way you can easily translate emails, FAQs or any type of text.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 animate__animated animate__fadeInLeft animate__delay-1s">
+                    <div class="feature-card h-100 p-4">
+                        <div class="card-body text-center">
+                            <i class="fab fa-html5 text-primary mb-3" style="font-size: 2rem;"></i>
+                            <h4>HTML</h4>
+                            <p class="text-muted">Get your web pages, email campaigns, localize access to social media solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 animate__animated animate__fadeInRight animate__delay-1s">
+                    <div class="feature-card h-100 p-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-plug text-primary mb-3" style="font-size: 2rem;"></i>
+                            <h4>INTEGRATIONS</h4>
+                            <p class="text-muted">Fliplingo integrates with the largest platforms used in social marketing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 animate__animated animate__fadeInRight">
+                    <div class="feature-card h-100 p-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-share-alt text-primary mb-3" style="font-size: 2rem;"></i>
+                            <h4>SOCIAL MEDIA</h4>
+                            <p class="text-muted">We integrate with all major Social Media platform so that you can be social in any language and reach new audiences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light" id="testimonials">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <h2 class="section-title animate__animated animate__fadeIn">What Our Clients Say</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 animate__animated animate__fadeIn">
+                    <div class="testimonial-card">
+                        <p class="lead fst-italic">"Fliplingo is a fantastic idea, and its execution is flawless. I can now reach out to million more users effortlessly!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="60" alt="Vincent">
+                            <div>
+                                <h5 class="mb-0 fw-bold">VINCENT LE MOGON</h5>
+                                <p class="text-muted mb-0">@WEBALYS - ENTREPRENEUR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="testimonial-card">
+                        <p class="lead fst-italic">"Fliplingo is great for reaching and interacting with audiences across countries and languages. Especially when quality matters."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle me-3" width="60" alt="Thomas">
+                            <div>
+                                <h5 class="mb-0 fw-bold">THOMAS KLEMPERUD</h5>
+                                <p class="text-muted mb-0">@KLEMPERUD</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 animate__animated animate__fadeIn animate__delay-2s">
+                <h5 class="mb-4">As seen in</h5>
+                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Bloomberg_Businessweek_Logo.svg" alt="Bloomberg Businessweek" class="img-fluid me-4 mb-3" style="height: 30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/TNW_logo.png" alt="The Next Web" class="img-fluid me-4 mb-3" style="height: 30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Yahoo%21_logo_%282013%29.svg" alt="Yahoo News" class="img-fluid me-4 mb-3" style="height: 30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Gizmodo_logo.png" alt="Gizmodo" class="img-fluid mb-3" style="height: 30px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section bg-primary text-white" id="contact">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4 animate__animated animate__fadeIn">Ready to Expand Your Global Reach?</h2>
+            <p class="lead mb-5 animate__animated animate__fadeIn animate__delay-1s">Join thousands of businesses using Fliplingo to break language barriers and connect with global audiences.</p>
+            <a href="#" class="btn btn-light btn-lg px-5 animate__animated animate__pulse animate__infinite">Start Translating Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h5 class="text-white mb-4"><i class="fas fa-language me-2"></i>Fliplingo</h5>
+                    <p class="text-muted">The best translation platform for multilingual businesses.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-6 col-md-3 col-lg-2 mb-4 mb-md-0">
+                    <h6 class="text-white mb-4">Product</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Features</a></li>
+                        <li class="mb-2"><a href="#">Pricing</a></li>
+                        <li class="mb-2"><a href="#">Languages</a></li>
+                        <li class="mb-2"><a href="#">Integrations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-6 col-md-3 col-lg-2 mb-4 mb-md-0">
+                    <h6 class="text-white mb-4">Company</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">About Us</a></li>
+                        <li class="mb-2"><a href="#">Careers</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                        <li class="mb-2"><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-6 col-md-3 col-lg-2 mb-4 mb-md-0">
+                    <h6 class="text-white mb-4">Support</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Help Center</a></li>
+                        <li class="mb-2"><a href="#">Contact Us</a></li>
+                        <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-6 col-md-3 col-lg-2">
+                    <h6 class="text-white mb-4">Contact</h6>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> New York, USA</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> hello@fliplingo.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-5 border-secondary">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-muted small mb-0">© 2023 Fliplingo. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-muted small mb-0">Breaking language barriers worldwide</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(entry.target.dataset.animate);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
